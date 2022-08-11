@@ -1,17 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block head %}
+<title>Flask 101</title>
+{% endblock %} {% block body %}
+<h1>flask Tutorial</h1>
+<table>
+  <tr>
+    <th>Task</th>
+    <th>completed</th>
+    <th>Action</th>
+  </tr>
+  {% for _ in tasks: %}
+  <tr>
+      <td>{{ _.id }}</td>
+      <td>{{ _.content }}</td>
+      <td>{{ _.completed }}</td>
+    {% endfor %}
+    <td>
+      <a href=""> Delete</a>
+      <br />
+      <a href="">Update</a>
+    </td>
+  </tr>
+</table>
 
-{% block head %}
-<title> Flask 101 </title>
-{% endblock %}
+<form action="/" method="POST">
+  <input type="text" name="content" id="content" />
+  <button type="submit">add task</button>
+</form>
 
-
-{% block body %}
-<h1> flask Tutorial</h1>
-{% endblock %}
-
-
-{% block aside %}
-<aside>
-    this shoud pop at a side left
-</aside>
+{% endblock %} {% block aside %}
+<aside>this shoud pop at a side left</aside>
 {% endblock %}

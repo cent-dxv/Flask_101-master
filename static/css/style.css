@@ -1,5 +1,20 @@
-body{
+body {
     margin: 20px;
-margin-top: 50px;
+    margin-top: 50px;
     font-size: 18px;
-} 
+}
+
+table {
+    border-color: snow;
+    background-color: rgba(95, 158, 160, 0.171);
+    padding: 8px;
+}
+td ,th{
+    padding: 5px;
+}
+
+input{
+    padding: 2px;
+    margin-top: 8px;
+
+}
