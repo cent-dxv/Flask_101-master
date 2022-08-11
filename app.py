@@ -1,5 +1,4 @@
 
-from asyncio import tasks
 from datetime import datetime
 
 from flask import Flask ,render_template ,request,redirect
@@ -38,6 +37,34 @@ def index():
         tasks = Todo.query.all()
         # print(tasks)      
         return  render_template('index.html' , tasks =tasks)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Todo.query.get_or_404(id)
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except Exception as e:
+        print(f' there is error need to be fixed {e}')
+        return redirect('/')
+
+    return f'item deleeted is {id}  task is {task_to_delete.content}'
+
+@app.route('/Update/<int:id>',methods=['POST'  ,'GET'])
+def update(id):
+    task_to_update = Todo.query.get_or_404(id)
+    if request.method == 'POST':
+        task_to_update.content = request.form['content']
+        db.session.commit()
+        return redirect('/')
+    else :
+       
+        return render_template('update.html' , task = task_to_update)
+
+
+
+
 
 
 

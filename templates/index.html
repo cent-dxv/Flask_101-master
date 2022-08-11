@@ -4,21 +4,22 @@
 <h1>flask Tutorial</h1>
 <table>
   <tr>
+    <th>id</th>
     <th>Task</th>
     <th>completed</th>
     <th>Action</th>
   </tr>
   {% for _ in tasks: %}
   <tr>
-      <td>{{ _.id }}</td>
-      <td>{{ _.content }}</td>
-      <td>{{ _.completed }}</td>
-    {% endfor %}
+    <td>{{ _.id }}</td>
+    <td>{{ _.content }}</td>
+    <td>{{ _.completed }}</td>
     <td>
-      <a href=""> Delete</a>
+      <a href="http://127.0.0.1:5500/delete/{{_.id}}"> Delete</a>
       <br />
-      <a href="">Update</a>
+      <a href="http://127.0.0.1:5500/Update/{{_.id}}">Update</a>
     </td>
+    {% endfor %}
   </tr>
 </table>
 
