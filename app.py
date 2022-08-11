@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-from flask import Flask ,render_template ,request,redirect
+from flask import Flask ,render_template ,request,redirect , jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -62,7 +62,9 @@ def update(id):
        
         return render_template('update.html' , task = task_to_update)
 
-
+@app.route('/json',methods=['POST'  ,'GET'])
+def get_in_json():
+    return  jsonify([{"name" : "cent" , "age" : 42} , {"name" : "cent" , "age" : 42}])
 
 
 
